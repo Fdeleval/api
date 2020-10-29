@@ -19,7 +19,7 @@ def testOutput(name):
     if movie['rank'] == name:
       return_value = movie
 
-  return jsonify(return_value)
+  return build_actual_response(jsonify(return_value))
 
 @app.route('/', methods=['GET'])
 def home():
@@ -32,3 +32,14 @@ def api_test_get():
   movie = res.to_dict(flat=False)['pos'][0]
   print(movie)
   return testOutput(movie)
+
+
+def build_preflight_response():
+    response = make_response()
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add('Access-Control-Allow-Headers', "*")
+    response.headers.add('Access-Control-Allow-Methods', "*")
+    return response
+def build_actual_response(response):
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
