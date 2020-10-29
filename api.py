@@ -11,12 +11,12 @@ def testOutput(name):
   with open('movies.json') as f:
     data = json.load(f)
 
-  return_value = 0
-  for movie in data:
-    if movie.title == name:
-      return_value = movie
+  # return_value = 0
+  # for movie in data:
+  #   if movie.title == name:
+  #     return_value = movie
 
-  return jsonify(movie)
+  return jsonify(data)
 
 @app.route('/', methods=['GET'])
 def home():
