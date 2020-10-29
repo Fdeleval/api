@@ -7,6 +7,9 @@ app.config["DEBUG"] = True
 def testOutput(age):
   return jsonify([{'name': 'fred', 'age': age}])
 
+@app.route('/favicon.ico')
+def fav()
+  return "<h1>What is this?</h1>"
 
 @app.route('/', methods=['GET'])
 def home():
