@@ -7,10 +7,16 @@ from flask import request, jsonify
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
-def testOutput(age):
+def testOutput(name):
   with open('movies.json') as f:
     data = json.load(f)
-  return jsonify(data)
+
+  return_value = 0
+  for movie in data
+    if movie.title == name
+      return_value = movie
+
+  return jsonify(movie)
 
 @app.route('/', methods=['GET'])
 def home():
@@ -18,4 +24,4 @@ def home():
 
 @app.route('/test', methods = ['GET', 'POST'])
 def api_test_get():
-  return testOutput(0)
+  return testOutput("Pulp Fiction")
