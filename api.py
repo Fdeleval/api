@@ -23,7 +23,7 @@ def testOutput(name):
 
 @app.route('/', methods=['GET'])
 def home():
-  return "<h1>Distant Reading Archive</h1><p>This site is a prototype API for distant reading of science fiction novels.</p>"
+  return "<h1>To use the api, insert: '/test?pos='a number'' at the end of the url</h1>"
 
 @app.route('/test', methods = ['GET', 'POST'])
 def api_test_get():
