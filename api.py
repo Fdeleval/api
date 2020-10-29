@@ -13,7 +13,7 @@ def testOutput(name):
 
   return_value = 0
   for movie in data:
-    if movie['title'] == name:
+    if movie['rank'] == name:
       return_value = movie
 
   return jsonify(return_value)
@@ -25,6 +25,6 @@ def home():
 @app.route('/test', methods = ['GET', 'POST'])
 def api_test_get():
   res = request.args
-  movie = res.to_dict(flat=False)['name'][0]
+  movie = res.to_dict(flat=False)['pos'][0]
   print(movie)
   return testOutput(movie)
