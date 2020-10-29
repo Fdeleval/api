@@ -1,6 +1,7 @@
 import flask
 # from flask_cors import CORS, cross_origin
 import json
+import sqlite3
 from flask import request, jsonify
 
 # this is a test
@@ -8,12 +9,14 @@ from flask import request, jsonify
 app = flask.Flask(__name__)
 # cors = CORS(app)
 app.config["DEBUG"] = True
+conn = sqlite3.connect('./jukebox.sqlite')
+
+c = conn.cursor()
 
 
 def testOutput(name):
   with open('movies.json') as f:
     data = json.load(f)
-
   return_value = 0
   for movie in data:
     if movie['rank'] == name:
@@ -23,9 +26,9 @@ def testOutput(name):
 
 @app.route('/', methods=['GET'])
 def home():
-  return "<h1>To use the api, insert: '/test?pos='a number'' at the end of the url</h1>"
+  return "<h1>Test api for the jukebox database (sqlite)</h1><br><p>/movie?pos=$ for movies<p>"
 
-@app.route('/test', methods = ['GET', 'POST'])
+@app.route('/movie', methods = ['GET', 'POST'])
 def api_test_get():
   res = request.args
   print(request.data)
@@ -33,6 +36,14 @@ def api_test_get():
   print(movie)
   return testOutput(movie)
 
+@app.route('/artists', methods = ['GET', 'POST'])
+def db_get_artists():
+  result = []
+  arr = c.execute("SELECT * FROM artists")
+  for row in arr:
+    result.append({row[0]: row[1]})
+
+  return build_actual_response(jsonify(result))
 
 def build_preflight_response():
     response = make_response()
