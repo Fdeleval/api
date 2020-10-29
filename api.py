@@ -20,5 +20,3 @@ def api_test_get():
   print(request.get_json())
   print("$$$$$$    $$$$$$$$")
   return jsonify(request.args)
-
-app.run()
