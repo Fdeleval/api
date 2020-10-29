@@ -25,5 +25,6 @@ def home():
 @app.route('/test', methods = ['GET', 'POST'])
 def api_test_get():
   res = request.args
-  print(res)
-  return testOutput("Pulp Fiction")
+  movie = res.to_dict(flat=False)['name'][0]
+  print(movie)
+  return testOutput(movie)
