@@ -9,7 +9,7 @@ from flask import request, jsonify
 app = flask.Flask(__name__)
 # cors = CORS(app)
 app.config["DEBUG"] = True
-conn = sqlite3.connect('./jukebox.sqlite')
+conn = sqlite3.connect('db/jukebox.sqlite')
 
 c = conn.cursor()
 
