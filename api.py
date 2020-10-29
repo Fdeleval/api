@@ -26,7 +26,7 @@ def testOutput(name):
 
 @app.route('/', methods=['GET'])
 def home():
-  return "<h1>Test api for the jukebox database (sqlite)</h1><br><p>/movie?pos=$ for movies<p>"
+  return render_template('index.html')
 
 @app.route('/movie', methods = ['GET', 'POST'])
 def api_test_get():
