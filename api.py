@@ -24,6 +24,6 @@ def home():
 
 @app.route('/test', methods = ['GET', 'POST'])
 def api_test_get():
-  res = request.args
+  res = request.get_json()
   print(res)
   return testOutput("Pulp Fiction")
