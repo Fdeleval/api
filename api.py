@@ -16,7 +16,7 @@ def testOutput(name):
     if movie['title'] == name:
       return_value = movie
 
-  return jsonify(data)
+  return jsonify(return_value)
 
 @app.route('/', methods=['GET'])
 def home():
@@ -25,5 +25,5 @@ def home():
 @app.route('/test', methods = ['GET', 'POST'])
 def api_test_get():
   res = request.args
-  print(res)
+  print(res[0])
   return testOutput("Pulp Fiction")
