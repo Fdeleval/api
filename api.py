@@ -1,12 +1,12 @@
 import flask
-from flask_cors import CORS, cross_origin
+# from flask_cors import CORS, cross_origin
 import json
 from flask import request, jsonify
 
 # this is a test
 
 app = flask.Flask(__name__)
-cors = CORS(app)
+# cors = CORS(app)
 app.config["DEBUG"] = True
 
 
