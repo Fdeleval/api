@@ -12,8 +12,8 @@ def testOutput(name):
     data = json.load(f)
 
   return_value = 0
-  for movie in data
-    if movie.title == name
+  for movie in data:
+    if movie.title == name:
       return_value = movie
 
   return jsonify(movie)
