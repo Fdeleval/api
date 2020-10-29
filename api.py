@@ -1,4 +1,5 @@
 import flask
+import json
 from flask import request, jsonify
 
 # this is a test
@@ -7,7 +8,9 @@ app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
 def testOutput(age):
-  return jsonify([{'name': 'fred', 'age': age}])
+  with open('movies.json') as f:
+    data = json.load(f)
+  return jsonify(data)
 
 @app.route('/', methods=['GET'])
 def home():
@@ -15,9 +18,4 @@ def home():
 
 @app.route('/test', methods = ['GET', 'POST'])
 def api_test_get():
-  print("=====")
-  print(request.method)
-  print(request.data)
-  print(request.get_json())
-  print("$$$$$$    $$$$$$$$")
-  return jsonify(request.args)
+  return testOutput(0)
