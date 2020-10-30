@@ -1,16 +1,12 @@
 import flask
-# from flask_cors import CORS, cross_origin
 import json
 import sqlite3
 from flask import request, jsonify, render_template
 
-# this is a test
 
 app = flask.Flask(__name__)
-# cors = CORS(app)
 app.config["DEBUG"] = True
 conn = sqlite3.connect('db/jukebox.sqlite')
-
 c = conn.cursor()
 
 
@@ -45,12 +41,14 @@ def db_get_artists():
 
   return build_actual_response(jsonify(result))
 
-def build_preflight_response():
-    response = make_response()
-    response.headers.add("Access-Control-Allow-Origin", "*")
-    response.headers.add('Access-Control-Allow-Headers', "*")
-    response.headers.add('Access-Control-Allow-Methods', "*")
-    return response
+
+# def build_preflight_response():
+#     response = make_response()
+#     response.headers.add("Access-Control-Allow-Origin", "*")
+#     response.headers.add('Access-Control-Allow-Headers', "*")
+#     response.headers.add('Access-Control-Allow-Methods', "*")
+#     return response
+
 def build_actual_response(response):
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
