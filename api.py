@@ -2,23 +2,9 @@ import flask
 import json
 import sqlite3
 from flask import request, jsonify, render_template
-import pyodbc
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
-
-# Server=tcp:uningosql.database.windows.net,1433;Initial Catalog=UNINGO;Persist Security Info=False;User ID=xdeleval;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-
-server = 'tcp:uningosql.database.windows.net'
-database = 'UNINGO'
-username = 'xdeleval'
-password = 'AvenuedesTouristes22'   
-driver= '{ODBC Driver 17 for SQL Server}'
-
-conn_az = pyodbc.connect('DRIVER='+driver+';SERVER='+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
-cursor = conn_az.cursor()
-
-
 
 conn = sqlite3.connect('db/jukebox.sqlite')
 c = conn.cursor()
