@@ -1,0 +1,10 @@
+Collecting pyodbc
+  Using cached pyodbc-4.0.30.tar.gz (266 kB)
+Building wheels for collected packages: pyodbc
+  Building wheel for pyodbc (setup.py): started
+  Building wheel for pyodbc (setup.py): finished with status 'error'
+  Running setup.py clean for pyodbc
+Failed to build pyodbc
+Installing collected packages: pyodbc
+    Running setup.py install for pyodbc: started
+    Running setup.py install for pyodbc: finished with status 'error'
